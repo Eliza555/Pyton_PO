@@ -1,5 +1,5 @@
 class Table:
-    """Класс, описывающий простой стол."""
+    """Класс, описывающий простой стол"""
 
     def __init__(self, material, length, width):
         self.material = material
