@@ -1,0 +1,82 @@
+class Vehicle:
+    """
+    Базовый класс для транспортных средств.
+    """
+
+    def __init__(self, make: str, model: str, year: int) -> None:
+        """
+        Инициализация транспортного средства.
+
+        :param make: Производитель транспортного средства.
+        :param model: Модель транспортного средства.
+        :param year: Год выпуска транспортного средства.
+        """
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def __str__(self) -> str:
+        """
+        Строковое представление транспортного средства.
+
+        :return: Строка, представляющая транспортное средство.
+        """
+        return f"{self.year} {self.make} {self.model}"
+
+    def __repr__(self) -> str:
+        """
+        Официальное строковое представление транспортного средства.
+
+        :return: Официальная строка для представления объекта.
+        """
+        return f"Vehicle(make='{self.make}', model='{self.model}', year={self.year})"
+
+
+class Car(Vehicle):
+    """
+    Дочерний класс для легковых автомобилей.
+    """
+
+    def __init__(self, make: str, model: str, year: int, doors: int) -> None:
+        """
+        Инициализация легкового автомобиля.
+        
+        :param make: Производитель легкового автомобиля.
+        :param model: Модель легкового автомобиля.
+        :param year: Год выпуска легкового автомобиля.
+        :param doors: Количество дверей в автомобиле.
+        """
+        super().__init__(make, model, year)
+        self.__doors = doors  # Инкапсуляция: количество дверей должно быть защищено
+
+    def get_doors(self) -> int:
+        """
+        Получить количество дверей в автомобиле.
+
+        :return: Количество дверей.
+        """
+        return self.__doors
+
+    def __str__(self) -> str:
+        """
+        Строковое представление легкового автомобиля.
+        
+        Расширение метода для включения информации о количестве дверей.
+
+        :return: Расширенная строка, представляющая легковой автомобиль.
+        """
+        return f"{super().__str__()} with {self.__doors} doors"
+
+    def __repr__(self) -> str:
+        """
+        Официальное строковое представление легкового автомобиля.
+
+        :return: Официальная строка для представления объекта.
+        """
+        return f"Car(make='{self.make}', model='{self.model}', year={self.year}, doors={self.__doors})"
+
+
+if __name__ == "__main__":
+    car = Car("Toyota", "Camry", 2022, 4)
+    print(car)  # Выводит: 2022 Toyota Camry with 4 doors
+    print(repr(car))  # Выводит: Car(make='Toyota', model='Camry', year=2022, doors=4)
