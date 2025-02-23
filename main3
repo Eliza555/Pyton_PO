@@ -19,7 +19,6 @@ class Book:
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}(name={self.name!r}, author={self.author!r})"
 
-
 class PaperBook(Book):
     """Класс бумажной книги, где дополнительно есть количество страниц."""
 
